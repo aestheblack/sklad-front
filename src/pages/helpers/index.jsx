@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import Navbar from "../../components/Navbar";
 
-const HelloWorld = () => {
-    return (
-        <div>
-            Hello World Helpers
-        </div>
-    );
+const Helper = () => {
+  return (
+    <>
+      <Navbar />
+      <div>
+        <h1>Helper</h1>
+      </div>
+    </>
+  );
 };
 
-export default HelloWorld;
+export default Helper;

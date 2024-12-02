@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import Navbar from "../../components/Navbar";
 
-const AdminPage = () => {
-    return (
-        <div>
-            <h1>Hello World Admin</h1>
-        </div>
-    );
+const Admin = () => {
+  return (
+    <>
+      <Navbar />
+      <div>
+        <h1>Admin</h1>
+      </div>
+    </>
+  );
 };
 
-export default AdminPage;
+export default Admin;
