@@ -9,6 +9,7 @@ import Dashboard from "./pages/dashboard";
 import Category from "./pages/categories";
 import Helper from "./pages/helpers";
 import Products from "./pages/products";
+import Private from "./components/Private";
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/categories" element={<Category />} />
-        <Route path="/helpers" element={<Helper />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/admin" element={<Private element={Admin} />} />
+        <Route path="/dashboard" element={<Private element={Dashboard} />} />
+        <Route path="/categories" element={<Private element={Category} />} />
+        <Route path="/helpers" element={<Private element={Helper} />} />
+        <Route path="/products" element={<Private element={Products} />} />
       </Routes>
     </Router>
   );
