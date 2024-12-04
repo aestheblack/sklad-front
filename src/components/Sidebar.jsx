@@ -46,8 +46,6 @@ const Sidebar = () => {
                 </Link>
                 </li>
             </ul>
-
-            {/* Add Logout Button */}
             <div className="mt-auto">
               <button
                 className="btn btn-danger w-100 mt-3"
