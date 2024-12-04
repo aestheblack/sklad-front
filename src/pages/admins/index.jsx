@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
+import Sidebar from "../../components/Sidebar";
 
 const Admin = () => {
   return (
     <>
-      <Navbar />
+      <Sidebar />
       <div>
         <h1>Admin</h1>
       </div>
