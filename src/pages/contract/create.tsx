@@ -15,7 +15,7 @@ const Custumer = ({ showCreateModal, createModal }: any): JSX.Element => {
         name="contracts"
         fields={[
           {
-            type: "string",
+            type: "number",
             required: true,
             name: "contractNomer",
             value: get(data, "contractNomer"),
@@ -45,11 +45,12 @@ const Custumer = ({ showCreateModal, createModal }: any): JSX.Element => {
               <div className="mt-5">
                 <Field
                   required
-                  name="fullName"
+                  type="number"
+                  name="contractNomer"
                   component={Fields.Input}
                   rootClassName="mb-[10px]"
-                  label={t("Full Name")}
-                  placeholder={t("Full Name")}
+                  label={t("Contract Number")}
+                  placeholder={t("Contract Number")}
                 />
                 <Field
                   name="customer"
