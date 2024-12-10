@@ -65,7 +65,7 @@ const Category = () => {
             <div>
               <div className="flex justify-between">
                 <Button
-                  title={t("Create")}
+                  title={t("Create category")}
                   icon={<CreateDoc />}
                   size="large"
                   className="bg-[#002855]"

@@ -65,7 +65,7 @@ const Custumer = () => {
             <div>
               <div className="flex justify-between">
                 <Button
-                  title={t("Create")}
+                  title={t("Create customer")}
                   icon={<CreateDoc />}
                   size="large"
                   className="bg-[#002855]"

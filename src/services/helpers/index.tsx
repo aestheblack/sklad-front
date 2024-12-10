@@ -26,7 +26,13 @@ const menuItems: MenuItem[] = [
     label: "Contracts",
     icon: <AppstoreOutlined />,
     route: "/contracts",
-  }
+  },
+  {
+    key: "products",
+    label: "Products",
+    icon: <AppstoreOutlined />,
+    route: "/products",
+  },
 ];
 
 export default {

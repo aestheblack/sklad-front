@@ -3,6 +3,7 @@ const User = lazy(() => import("pages/admin"));
 const Category = lazy(() => import("pages/category"));
 const Custumer = lazy(() => import("pages/custumer"));
 const Contract = lazy(() => import("pages/contract"));
+const Product = lazy(() => import("pages/product"));
 const Default = lazy(() => import("pages/default"));
 const NotFound = lazy(() => import("pages/notFound"));
 
@@ -45,6 +46,12 @@ const privateRoutes: IRoute[] = [
     key: "contracts",
     title: "Contracts",
     element: <Contract />,
+  },
+  {
+    path: "/products",
+    key: "products",
+    title: "Products",
+    element: <Product />,
   },
   {
     path: "*",
