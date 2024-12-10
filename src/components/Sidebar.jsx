@@ -45,6 +45,18 @@ const Sidebar = () => {
                   <span className="ms-1 d-none d-sm-inline">Products</span>
                 </Link>
                 </li>
+                <li>
+              <Link to="/contracts" className="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-basket2-fill"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">Contracts</span>
+                </Link>
+                </li>
+                <li>
+              <Link to="/customers" className="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-basket2-fill"></i>{" "}
+                  <span className="ms-1 d-none d-sm-inline">Customers</span>
+                </Link>
+                </li>
             </ul>
             <div className="mt-auto">
               <button
