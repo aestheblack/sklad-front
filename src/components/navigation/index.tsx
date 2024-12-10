@@ -3,7 +3,6 @@ import { Menu } from "antd";
 import { useHooks } from "hooks";
 import { Link } from "react-router-dom";
 import { Translation } from "assets/images/icons";
-import logo from "assets/images/logo.png";
 
 interface MenuItem {
   key: string;
@@ -43,13 +42,8 @@ const Navigation: React.FC = () => {
       style={{ transition: "none" }}
     >
       <div className="flex items-center justify-center text-center text-[20px] font-[500] mt-[30px] mb-[25px] cursor-pointer dark:text-[#002855]">
-        <img
-          src={logo}
-          alt="Logo"
-          className="mr-2 w-6 h-6 inline-block align-middle"
-        />
         <Link to="/" className="align-middle">
-          {t("KIUT")}
+          {t("Admin Dashboard")}
         </Link>
       </div>
       {items.map((menuItem, i) => (

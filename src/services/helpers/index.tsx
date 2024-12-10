@@ -1,11 +1,4 @@
-import {
-  AppstoreOutlined,
-  TranslationOutlined,
-  LineChartOutlined,
-  BookOutlined,
-  UserAddOutlined,
-  BellOutlined,
-} from "@ant-design/icons";
+import { AppstoreOutlined } from "@ant-design/icons";
 
 interface MenuItem {
   key: string;
@@ -17,75 +10,25 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    key: "problems",
-    label: "Masalalar",
+    key: "categories",
+    label: "Kategoriyalar",
     icon: <AppstoreOutlined />,
-    route: "/problems",
+    route: "/categories",
   },
   {
-    key: "projects",
-    label: "Loyihalar",
+    key: "customers",
+    label: "Mijozlar",
     icon: <AppstoreOutlined />,
-    route: "/projects",
+    route: "/customers",
   },
   {
-    key: "students",
-    label: "O'quvchilar",
-    icon: <UserAddOutlined />,
-    route: "/students",
-  },
-  {
-    key: "teachers",
-    label: "O'qituvchilar",
-    icon: <UserAddOutlined />,
-    route: "/teachers",
-  },
-  {
-    key: "marked-projects",
-    label: "Tekshirish",
+    key: "contracts",
+    label: "Contracts",
     icon: <AppstoreOutlined />,
-    route: "/marked-projects",
-  },
-  {
-    key: "difficulties",
-    label: "Qiyinliklar",
-    icon: <LineChartOutlined />,
-    route: "/difficulties",
-  },
-  {
-    key: "subjects",
-    label: "Fanlar",
-    icon: <BookOutlined />,
-    route: "/subjects",
-  },
-  {
-    key: "charts",
-    label: "Hisobotlar",
-    icon: <LineChartOutlined />,
-    route: "/charts",
-  },
-  {
-    key: "feedbacks",
-    label: "Fikrlar",
-    icon: <BellOutlined />,
-    route: "/feedbacks",
-  },
-  {
-    key: "translations",
-    label: "Tarjimalar",
-    icon: <TranslationOutlined />,
-    route: "/translations",
-  },
+    route: "/contracts",
+  }
 ];
-
-function gen4() {
-  return Math.random()
-    .toString(16)
-    .slice(-4);
-}
 
 export default {
   menuItems,
 };
-
-export { gen4 };

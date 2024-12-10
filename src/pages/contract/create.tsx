@@ -4,37 +4,31 @@ import { useHooks } from "hooks";
 import { Container } from "modules";
 import { Fields, Button } from "components";
 
-const Difficulty = ({ showCreateModal, createModal }: any): JSX.Element => {
+const Custumer = ({ showCreateModal, createModal }: any): JSX.Element => {
   const { t, get } = useHooks();
   let data = createModal.data && createModal?.data;
   return (
     <div>
       <Container.Form
-        url={data._id ? `/difficulties/${get(data, "_id")}` : "/difficulties"}
+        url={data._id ? `/contracts/${get(data, "_id")}` : "/contracts"}
         method={data._id ? "put" : "post"}
-        name="difficulties"
+        name="contracts"
         fields={[
           {
             type: "string",
             required: true,
-            name: "titleUz",
-            value: get(data, "titleUz"),
+            name: "contractNomer",
+            value: get(data, "contractNomer"),
           },
           {
-            type: "string",
+            type: "any",
             required: true,
-            name: "titleRu",
-            value: get(data, "titleRu"),
-          },
-          {
-            type: "string",
-            required: true,
-            name: "titleEn",
-            value: get(data, "titleEn"),
+            name: "customer",
+            value: get(data, "customer"),
           },
         ]}
         onSuccess={(data, resetForm, query) => {
-          query.invalidateQueries({ queryKey: ["difficulties"] });
+          query.invalidateQueries({ queryKey: ["contracts"] });
           resetForm();
           showCreateModal(false);
         }}
@@ -45,33 +39,29 @@ const Difficulty = ({ showCreateModal, createModal }: any): JSX.Element => {
           });
         }}
       >
-        {({ isLoading }) => {
+        {({ isLoading, setFieldValue }) => {
           return (
             <Spin spinning={isLoading} tip={t("Verifying")}>
               <div className="mt-5">
                 <Field
                   required
-                  name="titleUz"
+                  name="fullName"
                   component={Fields.Input}
                   rootClassName="mb-[10px]"
-                  label={t("difficulty uzbek")}
-                  placeholder={t("difficulty uzbek")}
+                  label={t("Full Name")}
+                  placeholder={t("Full Name")}
                 />
                 <Field
-                  required
-                  name="titleRu"
-                  component={Fields.Input}
-                  rootClassName="mb-[10px]"
-                  label={t("difficulty rus")}
-                  placeholder={t("difficulty rus")}
-                />
-                <Field
-                  required
-                  name="titleEn"
-                  component={Fields.Input}
-                  rootClassName="mb-[10px]"
-                  label={t("difficulty eng")}
-                  placeholder={t("difficulty eng")}
+                  name="customer"
+                  url="/customers"
+                  optionValue="_id"
+                  optionLabel="fullName"
+                  label={t("Customer")}
+                  placeholder={t("Customer")}
+                  component={Fields.AsyncSelect}
+                  onChange={(value: any) => {
+                    setFieldValue("customer", value);
+                  }}
                 />
                 <Button
                   size="large"
@@ -88,4 +78,4 @@ const Difficulty = ({ showCreateModal, createModal }: any): JSX.Element => {
   );
 };
 
-export default Difficulty;
+export default Custumer;

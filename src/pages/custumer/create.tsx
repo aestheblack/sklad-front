@@ -4,30 +4,25 @@ import { useHooks } from "hooks";
 import { Container } from "modules";
 import { Fields, Button } from "components";
 
-const Feedback = ({ showCreateModal, createModal }: any): JSX.Element => {
+const Custumer = ({ showCreateModal, createModal }: any): JSX.Element => {
   const { t, get } = useHooks();
   let data = createModal.data && createModal?.data;
   return (
     <div>
       <Container.Form
-        url={data._id ? `/feedbacks/${get(data, "_id")}` : "/feedbacks"}
+        url={data._id ? `/customers/${get(data, "_id")}` : "/customers"}
         method={data._id ? "put" : "post"}
-        name="feedbacks"
+        name="customers"
         fields={[
           {
             type: "string",
             required: true,
-            name: "feedback",
-            value: get(data, "feedback"),
-          },
-          {
-            name: "status",
-            type: "boolean",
-            value: get(data, "status"),
+            name: "fullName",
+            value: get(data, "fullName"),
           },
         ]}
         onSuccess={(data, resetForm, query) => {
-          query.invalidateQueries({ queryKey: ["feedbacks"] });
+          query.invalidateQueries({ queryKey: ["customers"] });
           resetForm();
           showCreateModal(false);
         }}
@@ -42,22 +37,13 @@ const Feedback = ({ showCreateModal, createModal }: any): JSX.Element => {
           return (
             <Spin spinning={isLoading} tip={t("Verifying")}>
               <div className="mt-5">
-                <p className="text-[#9EA3B5] px-[12px] py-[6px] bg-[#E6ECFE] dark:bg-[#454d70] rounded-[6px] inline-block mb-[12px] mr-[10px]">
-                  {t("Status")}
-                </p>
-                <Field
-                  name="status"
-                  label={t("status")}
-                  component={Fields.Switch}
-                  rootClassName="mb-[10px]"
-                />
                 <Field
                   required
-                  name="feedback"
-                  component={Fields.Textarea}
+                  name="fullName"
+                  component={Fields.Input}
                   rootClassName="mb-[10px]"
-                  label={t("feedback")}
-                  placeholder={t("feedback")}
+                  label={t("Full Name")}
+                  placeholder={t("Full Name")}
                 />
                 <Button
                   size="large"
@@ -74,4 +60,4 @@ const Feedback = ({ showCreateModal, createModal }: any): JSX.Element => {
   );
 };
 
-export default Feedback;
+export default Custumer;

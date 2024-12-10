@@ -6,11 +6,10 @@ import { Button } from "components";
 import { Container } from "modules";
 import Create from "./create";
 
-const Subject = () => {
+const Category = () => {
   const { Meta } = Card;
   const { get, queryClient, t } = useHooks();
   const [createModal, showCreateModal] = useState({ open: false, data: {} });
-  const [moreModal, showMoreModal] = useState({ open: false, data: {} });
   const { mutate } = usePost();
   const onDeleteHandler = (id: string) => {
     Modal.confirm({
@@ -24,10 +23,10 @@ const Subject = () => {
   const deleteAction = (id: string) => {
     if (id) {
       mutate(
-        { method: "delete", url: `/subjects/${id}`, data: null },
+        { method: "delete", url: `/categories/${id}`, data: null },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["subjects"] });
+            queryClient.invalidateQueries({ queryKey: ["categories"] });
             notification.success({
               message: t("Успешно удалена"),
               duration: 2,
@@ -52,8 +51,8 @@ const Subject = () => {
         centered
         title={
           get(createModal, "data._id")
-            ? t("Update subject")
-            : t("Create subject")
+            ? t("Update category")
+            : t("Create category")
         }
         width={500}
         destroyOnClose
@@ -61,12 +60,12 @@ const Subject = () => {
         <Create {...{ showCreateModal, createModal }} />
       </Modal>
       <div>
-        <Container.All name="subjects" url="/subjects">
+        <Container.All name="categories" url="/categories">
           {({ items }) => (
             <div>
               <div className="flex justify-between">
                 <Button
-                  title={t("Create subject")}
+                  title={t("Create")}
                   icon={<CreateDoc />}
                   size="large"
                   className="bg-[#002855]"
@@ -75,17 +74,14 @@ const Subject = () => {
               </div>
               <Row className="h-[120px] mt-[15px]">
                 {items.map((card) => (
-                  <Col
-                    className="cursor-pointer"
-                    onClick={() => showMoreModal({ open: true, data: card })}
-                  >
+                  <Col className="cursor-pointer">
                     <div className="mr-8 mb-4 w-[250px] h-[150px]">
                       <Meta
                         className="pb-[40px] p-0"
                         title={
                           <div className="mb-1">
                             <p className="dark:text-[#e5e7eb] block truncate">
-                              <strong>{get(card, "title", "")}</strong>
+                              <strong>{get(card, "name", "")}</strong>
                             </p>
                           </div>
                         }
@@ -122,4 +118,4 @@ const Subject = () => {
   );
 };
 
-export default Subject;
+export default Category;

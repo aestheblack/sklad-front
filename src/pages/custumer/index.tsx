@@ -1,18 +1,15 @@
 import { useState } from "react";
-import { Modal, notification, Pagination, Card, Row, Col } from "antd";
+import { Modal, notification, Card, Row, Col } from "antd";
 import { Delete, Edit, CreateDoc } from "assets/images/icons";
 import { useHooks, usePost } from "hooks";
 import { Button } from "components";
 import { Container } from "modules";
 import Create from "./create";
-import More from "./more";
 
-const Project = () => {
+const Custumer = () => {
   const { Meta } = Card;
   const { get, queryClient, t } = useHooks();
   const [createModal, showCreateModal] = useState({ open: false, data: {} });
-  const [moreModal, showMoreModal] = useState({ open: false, data: {} });
-  // const [page, setPage] = useState(1);
   const { mutate } = usePost();
   const onDeleteHandler = (id: string) => {
     Modal.confirm({
@@ -26,10 +23,10 @@ const Project = () => {
   const deleteAction = (id: string) => {
     if (id) {
       mutate(
-        { method: "delete", url: `/projects/${id}`, data: null },
+        { method: "delete", url: `/customers/${id}`, data: null },
         {
           onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["projects"] });
+            queryClient.invalidateQueries({ queryKey: ["customers"] });
             notification.success({
               message: t("Успешно удалена"),
               duration: 2,
@@ -54,78 +51,38 @@ const Project = () => {
         centered
         title={
           get(createModal, "data._id")
-            ? t("Update project")
-            : t("Create project")
+            ? t("Update customer")
+            : t("Create customer")
         }
-        width={950}
+        width={500}
         destroyOnClose
       >
         <Create {...{ showCreateModal, createModal }} />
       </Modal>
-      <Modal
-        open={moreModal.open}
-        onCancel={() => showMoreModal({ open: false, data: {} })}
-        footer={null}
-        centered
-        title={t("More information")}
-        width={900}
-        destroyOnClose
-      >
-        <More {...{ showMoreModal, moreModal }} />
-      </Modal>
       <div>
-        <Container.All
-          name="projects"
-          url="/projects"
-          // params={{ page, limit: 8 }}
-        >
-          {({ items, meta }) => (
+        <Container.All name="customers" url="/customers">
+          {({ items }) => (
             <div>
               <div className="flex justify-between">
                 <Button
-                  title={t("Create problem")}
+                  title={t("Create")}
                   icon={<CreateDoc />}
                   size="large"
                   className="bg-[#002855]"
                   onClick={() => showCreateModal({ open: true, data: {} })}
                 />
-                {/* {meta && meta.perPage && (
-                  <div className="mt-[20px] flex justify-center">
-                    <Pagination
-                      current={meta.currentPage}
-                      pageSize={meta.perPage}
-                      total={meta.totalCount}
-                      onChange={(page) => {
-                        setPage(page);
-                        window.scrollTo({
-                          behavior: "smooth",
-                          top: 0,
-                          left: 0,
-                        });
-                      }}
-                    />
-                  </div>
-                )} */}
               </div>
               <Row className="h-[120px] mt-[15px]">
                 {items.map((card) => (
-                  <Col
-                    className="cursor-pointer"
-                    onClick={() => showMoreModal({ open: true, data: card })}
-                  >
+                  <Col className="cursor-pointer">
                     <div className="mr-8 mb-4 w-[250px] h-[150px]">
                       <Meta
                         className="pb-[40px] p-0"
                         title={
                           <div className="mb-1">
                             <p className="dark:text-[#e5e7eb] block truncate">
-                              <strong>{get(card, "title", "")}</strong>
+                              <strong>{get(card, "fullName", "")}</strong>
                             </p>
-                          </div>
-                        }
-                        description={
-                          <div className="dark:text-[#e5e7eb] block truncate">
-                            <p>{get(card, "description", "")}</p>
                           </div>
                         }
                       />
@@ -161,4 +118,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Custumer;

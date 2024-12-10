@@ -4,37 +4,25 @@ import { useHooks } from "hooks";
 import { Container } from "modules";
 import { Fields, Button } from "components";
 
-const Subject = ({ showCreateModal, createModal }: any): JSX.Element => {
+const Category = ({ showCreateModal, createModal }: any): JSX.Element => {
   const { t, get } = useHooks();
   let data = createModal.data && createModal?.data;
   return (
     <div>
       <Container.Form
-        url={data._id ? `/subjects/${get(data, "_id")}` : "/subjects"}
+        url={data._id ? `/categories/${get(data, "_id")}` : "/categories"}
         method={data._id ? "put" : "post"}
-        name="subjects"
+        name="categories"
         fields={[
           {
             type: "string",
             required: true,
-            name: "titleUz",
-            value: get(data, "titleUz"),
-          },
-          {
-            type: "string",
-            required: true,
-            name: "titleRu",
-            value: get(data, "titleRu"),
-          },
-          {
-            type: "string",
-            required: true,
-            name: "titleEn",
-            value: get(data, "titleEn"),
+            name: "name",
+            value: get(data, "name"),
           },
         ]}
         onSuccess={(data, resetForm, query) => {
-          query.invalidateQueries({ queryKey: ["subjects"] });
+          query.invalidateQueries({ queryKey: ["categories"] });
           resetForm();
           showCreateModal(false);
         }}
@@ -51,27 +39,11 @@ const Subject = ({ showCreateModal, createModal }: any): JSX.Element => {
               <div className="mt-5">
                 <Field
                   required
-                  name="titleUz"
+                  name="name"
                   component={Fields.Input}
                   rootClassName="mb-[10px]"
-                  label={t("subject uzbek")}
-                  placeholder={t("subject uzbek")}
-                />
-                <Field
-                  required
-                  name="titleRu"
-                  component={Fields.Input}
-                  rootClassName="mb-[10px]"
-                  label={t("subject russian")}
-                  placeholder={t("subject russian")}
-                />
-                <Field
-                  required
-                  name="titleEn"
-                  component={Fields.Input}
-                  rootClassName="mb-[10px]"
-                  label={t("subject english")}
-                  placeholder={t("subject english")}
+                  label={t("Name")}
+                  placeholder={t("Name")}
                 />
                 <Button
                   size="large"
@@ -88,4 +60,4 @@ const Subject = ({ showCreateModal, createModal }: any): JSX.Element => {
   );
 };
 
-export default Subject;
+export default Category;

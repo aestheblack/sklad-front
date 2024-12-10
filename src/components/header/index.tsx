@@ -1,10 +1,7 @@
-import React from "react";
-import { Layout, Select } from "antd";
-import i18next from "i18next";
+import { Layout } from "antd";
 import { useHooks } from "hooks";
 import useStore from "store";
 import { privateRoutes } from "routes/data";
-import config from "config";
 
 import Avatar from 'assets/images/27470334_7309681.jpg'
 import Arrow from 'assets/images/dropdown-arrow.svg'
@@ -16,15 +13,8 @@ const { Header } = Layout;
 
 const HeaderComponent = () => {
   const { get, location, t, navigate } = useHooks();
-  const { system } = useStore();
-  const { Option } = Select;
   const menus = privateRoutes.find((m) => m.path === get(location, "pathname"));
   const { logOut } = useStore((state) => state);
-
-  const changeLang = (langCode: string) => {
-    i18next.changeLanguage(langCode);
-    window.location.reload();
-  };
 
   return (
     <Header className="flex justify-between items-center bg-[#fff] dark:bg-[#222638] p-0 pr-[20px]">
@@ -34,17 +24,6 @@ const HeaderComponent = () => {
         </span>
       </div>
       <div className="flex items-center">
-        <Select
-          defaultValue={system?.lang}
-          size={"large"}
-          onChange={(value: any) => {
-            changeLang(value);
-          }}
-        >
-          {config.API_LANGUAGES.map((lang) => (
-            <Option value={lang?.code}>{get(lang, 'short', '')}</Option>
-          ))}
-        </Select>
         <div className="profile-dropdown">
           <div className="profile-dropdown__circle">
             <img className="profile-dropdown__avatar" src={Avatar} alt="avatar" />

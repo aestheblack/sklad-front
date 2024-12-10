@@ -11,7 +11,6 @@ import useStore from "store";
 import { Spin } from "antd";
 const Default = lazy(() => import("pages/default"));
 
-
 interface IRoute {
   path: string;
   key?: string | "*";
@@ -25,35 +24,46 @@ const RoutesWrapper = () => {
   const { get, t } = useHooks();
   const { auth } = useStore((state) => state);
 
-  const data = get(auth, "data")
+  const data = get(auth, "data");
 
-  const filterKeys = get(data, "role.access", []).map((item: any) => (item.value));
+  const filterKeys = get(data, "role.access", []).map(
+    (item: any) => item.value
+  );
 
-  const filterMenuItems = (menuItems: IRoute[], filterKeys: string[]): IRoute[] => {
+  const filterMenuItems = (
+    menuItems: IRoute[],
+    filterKeys: string[]
+  ): IRoute[] => {
     return menuItems.reduce((filteredItems: IRoute[], item) => {
       //@ts-ignore
       if (filterKeys.includes(item.key)) {
         filteredItems.push(item);
       }
-      return filteredItems.length > 0 ? filteredItems : [{
-        path: "/",
-        key: "inner-settings",
-        title: "Welcome",
-        element: <Default />,
-      }]
+      return filteredItems.length > 0
+        ? filteredItems
+        : [
+            {
+              path: "/",
+              key: "inner-settings",
+              title: "",
+              element: <Default />,
+            },
+          ];
     }, []);
   };
 
   return (
-    <div className='h-full'>
+    <div className="h-full">
       <Routes>
         <Route
           path={"/login"}
           element={
             <Suspense
-              fallback={<div className="flex justify-center items-center">
-                <Spin spinning={true} tip={t("Verifying")} />
-              </div>}
+              fallback={
+                <div className="flex justify-center items-center">
+                  <Spin spinning={true} tip={t("Verifying")} />
+                </div>
+              }
             >
               <PublicRoute children={<Login />} />
             </Suspense>
@@ -63,15 +73,24 @@ const RoutesWrapper = () => {
           path={"*"}
           element={
             <Suspense
-              fallback={<div className="flex justify-center items-center">
-                <Spin spinning={true} tip={t("Verifying")} />
-              </div>}
+              fallback={
+                <div className="flex justify-center items-center">
+                  <Spin spinning={true} tip={t("Verifying")} />
+                </div>
+              }
             >
-              <PrivateRoute children={<> <NotFound /> </>} />
+              <PrivateRoute
+                children={
+                  <>
+                    {" "}
+                    <NotFound />{" "}
+                  </>
+                }
+              />
             </Suspense>
           }
         />
-        <Route path='/' element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           {/* Private protected routes */}
           {privateRoutes.length > 0 &&
             // filterMenuItems(privateRoutes, filterKeys).map((route, idx) => {
@@ -83,7 +102,7 @@ const RoutesWrapper = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div className='flex justify-center items-center h-[80vh]'>
+                        <div className="flex justify-center items-center h-[80vh]">
                           <Spin spinning={true} tip={t("Loading...")} />
                         </div>
                       }
@@ -99,7 +118,7 @@ const RoutesWrapper = () => {
                       element={
                         <Suspense
                           fallback={
-                            <div className='flex justify-center items-center h-[80vh]'>
+                            <div className="flex justify-center items-center h-[80vh]">
                               <Spin spinning={true} tip={t("Loading...")} />
                             </div>
                           }
@@ -123,7 +142,7 @@ const RoutesWrapper = () => {
                   element={
                     <Suspense
                       fallback={
-                        <div className='flex justify-center items-center h-[80vh]'>
+                        <div className="flex justify-center items-center h-[80vh]">
                           <Spin spinning={true} tip={t("Loading...")} />
                         </div>
                       }
@@ -139,7 +158,7 @@ const RoutesWrapper = () => {
                       element={
                         <Suspense
                           fallback={
-                            <div className='flex justify-center items-center h-[80vh]'>
+                            <div className="flex justify-center items-center h-[80vh]">
                               <Spin spinning={true} tip={t("Loading...")} />
                             </div>
                           }

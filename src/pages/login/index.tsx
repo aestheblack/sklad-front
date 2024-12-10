@@ -9,7 +9,7 @@ const Login = () => {
   const { get, t } = useHooks();
   const { signIn } = useStore((state) => state);
   return (
-    <section className="h-[100vh] px-[6%] py-[12%] login-wrapper">
+    <section className="h-[100vh] px-[6%] py-[12%]">
       <Container.Form
         className="xl:max-w-[650px] lg:max-w-[450px] md:max-w-[400px] md:flex md:justify-center"
         url="/admins/login"
