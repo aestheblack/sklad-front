@@ -33,7 +33,7 @@ const MyButton = (props: IProps) => {
         loading={isLoading}
         className={
           className +
-          " bg-[#002855] text-[17px] text-white hover:!text-black flex items-center justify-center border-none"
+          " bg-[#f69b33] text-[17px] text-white hover:!text-black flex items-center justify-center border-none"
         }
       >
         {title}

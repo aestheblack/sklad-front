@@ -48,7 +48,7 @@ const Login = () => {
               <div>
                 <h1 className="text-center text-[#000000DE] text-[32px] font-[600] mb-[8px]">
                   {t("Welcome to")}{" "}
-                  <span className="text-[#3367F6]">
+                  <span className="text-[#f69b33]">
                     {" "}
                     {t("Admin Dashboard")}
                   </span>

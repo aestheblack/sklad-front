@@ -17,7 +17,7 @@ const HeaderComponent = () => {
   const { logOut } = useStore((state) => state);
 
   return (
-    <Header className="flex justify-between items-center bg-[#fff] dark:bg-[#222638] p-0 pr-[20px]">
+    <Header className="flex justify-between items-center bg-[#fff] dark:bg-[#f69b33] p-0 pr-[20px]">
       <div>
         <span className="font-[500] text-[20px] dark:text-[#9EA3B5] text-black ml-[48px]">
           {t(get(menus, 'title', ""))}

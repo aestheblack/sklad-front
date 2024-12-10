@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
-import cx from "classnames";
-
-import { Navigation, Header, Navigation2 } from "components";
-import useStore from "store";
+import { Header, Navigation2 } from "components";
 
 const { Sider, Content } = Layout;
 
 const App: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(true);
-  const { system } = useStore();
-
   return (
     <Layout className="h-full">
-      <Sider
-        trigger={null}
-      >
+      <Sider trigger={null}>
         <Navigation2 />
       </Sider>
       <Layout>

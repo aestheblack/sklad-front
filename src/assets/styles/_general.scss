@@ -90,11 +90,11 @@ ul {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #3367F6;
+  background-color: #f69b33;
 }
 
 ::selection {
-  background-color: #3367F6;
+  background-color: #f69b33;
   color: #ffffff;
 }
 
@@ -126,7 +126,7 @@ ul {
 .ant-layout-sider-children {
   background-color: #f5f5f5;
   ul {
-    border-right: 2px solid #e6ecfe !important;
+    border-right: 2px solid #f69b33 !important;
     padding: 10px;
   }
 }
@@ -170,9 +170,9 @@ ul {
 }
 
 .navbar-menuitem-actived {
-  color: #3367F6;
+  color: #f69b33;
 
   svg {
-    fill: #3367F6;
+    fill: #f69b33;
   }
 }
