@@ -33,6 +33,12 @@ const menuItems: MenuItem[] = [
     icon: <AppstoreOutlined />,
     route: "/products",
   },
+  {
+    key: "statistics",
+    label: "Statistics",
+    icon: <AppstoreOutlined />,
+    route: "/statistics",
+  },
 ];
 
 export default {

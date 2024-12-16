@@ -6,6 +6,7 @@ const Contract = lazy(() => import("pages/contract"));
 const Product = lazy(() => import("pages/product"));
 const Default = lazy(() => import("pages/default"));
 const NotFound = lazy(() => import("pages/notFound"));
+const Statistics = lazy(() => import("pages/statistics"));
 
 export interface IRoute {
   path: string;
@@ -52,6 +53,12 @@ const privateRoutes: IRoute[] = [
     key: "products",
     title: "Products",
     element: <Product />,
+  },
+  {
+    path: "/statistics",
+    key: "statistics",
+    title: "Statistics",
+    element: <Statistics />,
   },
   {
     path: "*",
