@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <section className="h-[100vh] px-[6%] py-[12%]">
       <Container.Form
-        className="xl:max-w-[650px] lg:max-w-[450px] md:max-w-[400px] md:flex md:justify-center"
+        className="w-[400px] mx-auto"        
         url="/admins/login"
         method="post"
         fields={[
